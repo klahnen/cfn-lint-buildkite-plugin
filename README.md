@@ -11,5 +11,5 @@ steps:
   - label: ":cloudformation: Lint CloudFormation"
     plugins:
       - klahnen/cfn-lint#v1.0.0:
-          template: template.yaml
+          templates: template.yaml
 ```
