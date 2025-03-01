@@ -1,18 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Get the templates path from plugin config or use default
-TEMPLATES="${BUILDKITE_PLUGIN_CFN_LINT_TEMPLATES:-template.yaml}"
+echo "--- :cloudformation: Running cfn-lint with .cfnlintrc.yml configuration"
 
-echo "--- :cloudformation: Running cfn-lint on ${TEMPLATES}"
-
-# Check if the pattern matches any files
-if ls /data/${TEMPLATES} 1> /dev/null 2>&1; then
-  # Run the Docker container with the specified templates
-  docker run --rm -v "$(pwd):/data" giammbo/cfn-lint "/data/${TEMPLATES}"
-else
-  echo "Error: No files found matching pattern '/data/${TEMPLATES}'"
-  echo "Current directory contents:"
-  ls -la /data/
-  exit 1
-fi
+# Run cfn-lint without specifying files, letting it use .cfnlintrc.yml
+docker run --rm -v "$(pwd):/data" -w "/data" giammbo/cfn-lint

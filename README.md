@@ -10,6 +10,5 @@ Add the following to your `pipeline.yml`:
 steps:
   - label: ":cloudformation: Lint CloudFormation"
     plugins:
-      - klahnen/cfn-lint#v1.0.0:
-          templates: template.yaml
+      - klahnen/cfn-lint: {}
 ```

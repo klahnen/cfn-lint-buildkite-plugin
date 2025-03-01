@@ -1,10 +1,8 @@
 name: CFN Lint
-description: Runs cfn-lint in a Docker container
+description: Runs cfn-lint in a Docker container using .cfnlintrc.yml configuration
 author: https://github.com/klahnen
 requirements:
   - docker
 configuration:
-  properties:
-    templates:
-      type: string
+  properties: {}  # No properties needed, as we're using .cfnlintrc.yml
   additionalProperties: false
