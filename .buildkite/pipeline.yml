@@ -1,0 +1,13 @@
+steps:
+  - label: ":lint: Lint plugin"
+    plugins:
+      - plugin-linter#v3.0.0:
+          id: klahnen/cfn-lint
+
+  - label: ":test_tube: Test plugin"
+    command: docker-compose run --rm tests
+
+  - label: ":cloudformation: Test in pipeline"
+    plugins:
+      - ./.
+        template: template.yaml

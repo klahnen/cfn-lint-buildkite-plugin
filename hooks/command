@@ -1,0 +1,11 @@
+# hooks/command
+#!/bin/bash
+set -euo pipefail
+
+# Get the template path from plugin config or use default
+TEMPLATE_PATH="${BUILDKITE_PLUGIN_CFN_LINT_TEMPLATE:-template.yaml}"
+
+echo "--- :cloudformation: Running cfn-lint on ${TEMPLATE_PATH}"
+
+# Run the Docker container with the specified template
+docker run --rm -v "$(pwd):/data" giammbo/cfn-lint "/data/${TEMPLATE_PATH}"

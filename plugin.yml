@@ -1,0 +1,10 @@
+name: CFN Lint
+description: Runs cfn-lint in a Docker container
+author: https://github.com/klahnen
+requirements:
+  - docker
+configuration:
+  properties:
+    template:
+      type: string
+  additionalProperties: false
