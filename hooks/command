@@ -6,6 +6,13 @@ TEMPLATES="${BUILDKITE_PLUGIN_CFN_LINT_TEMPLATES:-template.yaml}"
 
 echo "--- :cloudformation: Running cfn-lint on ${TEMPLATES}"
 
-# Run the Docker container with the specified templates
-# The path is passed as is, letting cfn-lint handle the glob pattern
-docker run --rm -v "$(pwd):/data" giammbo/cfn-lint "/data/${TEMPLATES}"
+# Check if the pattern matches any files
+if ls /data/${TEMPLATES} 1> /dev/null 2>&1; then
+  # Run the Docker container with the specified templates
+  docker run --rm -v "$(pwd):/data" giammbo/cfn-lint "/data/${TEMPLATES}"
+else
+  echo "Error: No files found matching pattern '/data/${TEMPLATES}'"
+  echo "Current directory contents:"
+  ls -la /data/
+  exit 1
+fi
