@@ -4,5 +4,7 @@ author: https://github.com/klahnen
 requirements:
   - docker
 configuration:
-  properties: {}  # No properties needed, as we're using .cfnlintrc.yml
+  properties:
+    config-file:
+      type: string
   additionalProperties: false
