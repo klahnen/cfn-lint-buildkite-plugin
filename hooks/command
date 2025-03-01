@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Get the template path from plugin config or use default
-TEMPLATE_PATH="${BUILDKITE_PLUGIN_CFN_LINT_TEMPLATE:-template.yaml}"
+TEMPLATE_PATH="${BUILDKITE_PLUGIN_CFN_LINT_TEMPLATES:-template.yaml}"
 
 echo "--- :cloudformation: Running cfn-lint on ${TEMPLATE_PATH}"
 
