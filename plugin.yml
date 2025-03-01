@@ -5,6 +5,6 @@ requirements:
   - docker
 configuration:
   properties:
-    template:
+    templates:
       type: string
   additionalProperties: false
