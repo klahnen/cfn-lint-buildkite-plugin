@@ -5,7 +5,7 @@ echo "--- :cloudformation: Running cfn-lint with ${BUILDKITE_PLUGIN_CFN_LINT_CON
 
 # Run cfn-lint without specifying files, letting it use .cfnlintrc.yml
 docker run --rm \
-    -v "$(pwd):/data" \
-    -w "/data" \
+    -v "$(pwd):/app" \
+    -w "/app" \
     klahnen/cfn-lint:v1.24.0 \
     --config-file $BUILDKITE_PLUGIN_CFN_LINT_CONFIG_FILE
