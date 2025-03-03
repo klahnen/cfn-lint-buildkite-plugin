@@ -7,5 +7,6 @@ echo "--- :cloudformation: Running cfn-lint with ${BUILDKITE_PLUGIN_CFN_LINT_CON
 docker run --rm \
     -v "$(pwd):/app" \
     -w "/app" \
+    -e PYTHONPATH=/app \
     klahnen/cfn-lint:v1.24.0 \
     --config-file $BUILDKITE_PLUGIN_CFN_LINT_CONFIG_FILE
