@@ -3,6 +3,10 @@ set -euo pipefail
 
 echo "--- :cloudformation: Running cfn-lint with ${BUILDKITE_PLUGIN_CFN_LINT_CONFIG_FILE} configuration"
 
+# Print the current working directory and check if the rules directory exists
+pwd
+ls -la cfn_lint_rules/rules/
+
 # Run cfn-lint without specifying files, letting it use .cfnlintrc.yml
 docker run --rm \
     -v "$(pwd):/app" \
